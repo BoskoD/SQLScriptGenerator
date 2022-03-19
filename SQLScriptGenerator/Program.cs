@@ -1,9 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.IO;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using Microsoft.SqlServer.Management.Common;
 using Smo = Microsoft.SqlServer.Management.Smo;
+using Console = Colorful.Console;
+using System.Drawing;
 
 namespace SQLScriptGeneratorApp
 {
@@ -39,7 +38,7 @@ namespace SQLScriptGeneratorApp
                 var views      = databases.Views.Cast<Smo.View>().Where(i => i.Schema == schemaName);
                 var procedures = databases.StoredProcedures.Cast<Smo.StoredProcedure>().Where(i => i.Schema == schemaName);
 
-                Console.WriteLine("SQL Script Generator");
+                Console.WriteAscii("SQL Script Generator", Color.Cyan);
 
                 Console.WriteLine("\nTable Scripts:");
                 foreach (Smo.Table table in tables)
